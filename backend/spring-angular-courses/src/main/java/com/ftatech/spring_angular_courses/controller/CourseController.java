@@ -12,7 +12,6 @@ import com.ftatech.spring_angular_courses.service.CourseService;
 
 @RestController
 @RequestMapping("/api/courses")
-@CrossOrigin(origins = { "*" })
 public class CourseController {
 
     private final CourseService courseService;
