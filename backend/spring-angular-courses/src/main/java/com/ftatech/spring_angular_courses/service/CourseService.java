@@ -15,7 +15,15 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public List<Course>fetchCourses() {
+    public List<Course> fetchCourses() {
         return courseRepository.findAll();
+    }
+
+    public Course postCourse(Course course) {
+        try {
+            return courseRepository.save(course);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
     }
 }
