@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { CoursesService } from '../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
@@ -10,20 +9,17 @@ import { Location } from '@angular/common';
   styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent implements OnInit {
-  form: UntypedFormGroup;
+  form = this.formBuilder.group({
+    name: new FormControl('', { nonNullable: true }),
+    category: [''],
+  });
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
-    private router: Router,
+    private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private _snackBar: MatSnackBar,
     private location: Location
-  ) {
-    this.form = this.formBuilder.group({
-      name: [],
-      category: [],
-    });
-  }
+  ) {}
 
   ngOnInit(): void {}
 
@@ -54,5 +50,7 @@ export class CourseFormComponent implements OnInit {
     this._snackBar.open('Course saved!', 'Close', {
       duration: 5000,
     });
+
+
   }
 }
