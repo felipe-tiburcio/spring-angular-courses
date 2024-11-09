@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'category', 'actions'];
+  
 
   courses$: Observable<Course[]>;
 
